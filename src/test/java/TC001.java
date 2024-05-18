@@ -1,4 +1,5 @@
 import Configuration.Configuration;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
@@ -10,41 +11,49 @@ import pageNavigation.PageElements;
 import static org.junit.Assert.assertTrue;
 
 public class TC001 {
-    private String email="test@example.com";
-    private String password="";
+    private String email="test734@test.com";
+    private String password="test734@test.com";
     private static final long PAGE_LOAD_THRESHOLD = 6000;
     private WebDriver driver;
 
-    @FindBy(xpath = PageElements.signInButtonXpath)
-    private WebElement signInButton;
-    @FindBy(xpath = PageElements.emailLoginInputXpath)
-    private WebElement emailLoginInput;
-    @FindBy(xpath = PageElements.passwordLoginInputXpath)
-    private WebElement passwordLoginInput;
+    @FindBy(xpath = PageElements.MainPageSignInButtonXpath)
+    private WebElement MainPageSignInButton;
+    @FindBy(xpath = PageElements.LoginPageEmailLoginInputXpath)
+    private WebElement LoginPageEmailInput;
+    @FindBy(xpath = PageElements.LoginPagePasswordLoginInputXpath)
+    private WebElement LoginPagePasswordInput;
+    @FindBy(xpath = PageElements.LoginPageSingInButtonXpath)
+    private WebElement LoginPageSingInButton;
+    @FindBy(xpath = PageElements.MyAccountPageClothesButtonXpath)
+    private WebElement MyAccountPageClothesButton;
     public TC001() {
         Configuration configuration = new Configuration();
         driver = configuration.getDriver();
         PageFactory.initElements(driver, this);
     }
 
-    @Given("User on store home web page")
+    @Given("TC001 User on store home web page")
     public void given() {
         long startTime = System.currentTimeMillis();
         driver.get("https://mystore-testlab.coderslab.pl");
         long endTime = System.currentTimeMillis();
         long pageLoadTime = endTime - startTime;
         System.out.println("Page load time: "+pageLoadTime+" ms");
-
+        //possibility to set threshold if needed
 //        assertTrue("Page load time exceeds threshold", pageLoadTime <= PAGE_LOAD_THRESHOLD);
     }
-    @When("User log in with walid credentials")
+    @When("TC001 User log in with walid credentials")
     public void loggIn(){
+        assertTrue("Sign-in button is not displayed on the main page.", MainPageSignInButton.isDisplayed());
+        MainPageSignInButton.click();
+        assertTrue("Email input is not displayed on the login page.",LoginPageEmailInput.isDisplayed());
+        LoginPageEmailInput.sendKeys(email);
 
-        System.out.println(signInButton);
-        System.out.println(emailLoginInput);
-        System.out.println(passwordLoginInput);
-        signInButton.click();
-        emailLoginInput.sendKeys(email);
-        passwordLoginInput.sendKeys(password);
+        LoginPagePasswordInput.sendKeys(password);
+        LoginPageSingInButton.click();
+    }
+    @And("TC001 User go to Clothes page")
+    public void goToClothesPage(){
+        MyAccountPageClothesButton.click();
     }
 }
