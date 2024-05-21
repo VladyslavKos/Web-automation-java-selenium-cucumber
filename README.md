@@ -32,6 +32,4 @@ This project is a web automation framework designed to automate testing for web 
 ### Running Tests
 To execute the tests, run the following command from the root directory of the project:
   ```bash
-  mvn test
-
-   
+   mvn test
