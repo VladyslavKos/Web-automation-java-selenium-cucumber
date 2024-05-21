@@ -9,5 +9,5 @@ import org.junit.runner.RunWith;
         plugin = {"pretty", "html:target/cucumber-reports"},
         tags = "@TC001"
 )
-public class CucumberTestRunner {
+public class TestRunner {
 }
