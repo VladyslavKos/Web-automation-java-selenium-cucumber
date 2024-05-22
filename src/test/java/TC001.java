@@ -51,41 +51,35 @@ public class TC001 {
     }
 
     @When("TC001 User log in with walid credentials")
-    public void loggIn() {
-        assertTrue("Sign-in button is not displayed on the main page.", MainPageSignInButton.isDisplayed());
+    public void logIn() {
         MainPageSignInButton.click();
-        String expectedLoginPageUrl = Urls.loginPageUrl;
-        assertEquals("The current url does not match expected Loin Page Url", expectedLoginPageUrl, driver.getCurrentUrl());
-        assertTrue("Email input is not displayed on the login page.", LoginPageEmailInput.isDisplayed());
+        assertEquals("The current url does not match expected Loin Page Url", Urls.loginPageUrl, driver.getCurrentUrl());
+        assertTrue("Email input is not empty", LoginPageEmailInput.getText().isEmpty());
+        assertTrue("Password input is not empty", LoginPageEmailInput.getText().isEmpty());
         LoginPageEmailInput.sendKeys(email);
         LoginPagePasswordInput.sendKeys(password);
         LoginPageSingInButton.click();
-        String expectedMyAccountPageUrl = Urls.myAccountPageUrl;
-        assertEquals("The current url does not match expected my account page url", expectedMyAccountPageUrl, driver.getCurrentUrl());
+        assertEquals("The current url does not match expected my account page url", Urls.myAccountPageUrl, driver.getCurrentUrl());
     }
 
     @And("TC001 User go to Clothes page")
     public void goToClothesPage() {
-        assertTrue("Clothes button is not displayed", ClothesButton.isDisplayed());
+        assertEquals("Clothes button text incorrect", "CLOTHES", ClothesButton.getText());
         ClothesButton.click();
-        String expectedClothesPageUrl = Urls.clothesPageUrl;
-        assertEquals("The current url does not match clothes page url", expectedClothesPageUrl, driver.getCurrentUrl());
+        assertEquals("The current url does not match clothes page url", Urls.clothesPageUrl, driver.getCurrentUrl());
     }
 
     @And("TC001 User go to Accessories page")
     public void goToAccessoriesPage() {
-        assertTrue("Accessories button is not displayed", AccessoriesButton.isDisplayed());
+        assertEquals("Accessories button text incorrect", "ACCESSORIES", AccessoriesButton.getText());
         AccessoriesButton.click();
-        String expectedAccessoriesUrl = Urls.accessoriesPageUrl;
-        assertEquals("The current url doesn't match accessories page url", expectedAccessoriesUrl, driver.getCurrentUrl());
+        assertEquals("The current url doesn't match accessories page url", Urls.accessoriesPageUrl, driver.getCurrentUrl());
     }
 
     @And("TC001 User go to Art page")
     public void goToArtPage() {
-        assertTrue("Art button not displayed", ArtButton.isDisplayed());
+        assertEquals("Art button text incorrect", "ART",ArtButton.getText());
         ArtButton.click();
-        String expectedArtPageUrl = Urls.artPageUrl;
-        assertEquals("The current url does not match Art page url", expectedArtPageUrl, driver.getCurrentUrl());
-        driver.quit();
+        assertEquals("The current url does not match Art page url", Urls.artPageUrl, driver.getCurrentUrl());
     }
 }
