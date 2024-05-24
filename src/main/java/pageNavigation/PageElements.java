@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class PageElements {
-    // for bigger project will be great to sort elements per pages for ex all elements from main page in MainPage.java and e.
+    // !!!for bigger project will be great to sort elements per pages for ex all elements from main page in MainPage.java and e.
     public static final String MainPageSignInButtonXpath = "//*[@id=\"_desktop_user_info\"]/div/a/span";
     public static final String LoginPageEmailLoginInputXpath = "//*[@id=\"field-email\"]";
     public static final String LoginPagePasswordLoginInputXpath = "//*[@id=\"field-password\"]";
@@ -21,4 +21,8 @@ public class PageElements {
     public static final String IdentityPageSaveButtonXpath = "//*[@id=\"customer-form\"]/footer/button";
     public static final String IdentitySuccessMessageXpath = "//*[@id=\"notifications\"]/div/article/ul/li";
     public static final String DesktopUserInfoXpath = "//*[@id=\"_desktop_user_info\"]/div/a[2]/span";
+    public static final String MyStoreLogoButtonXpath = "//*[@id=\"_desktop_logo\"]/a/img";
+    public static final String ProductViewAddToCartButtonXpath = "//*[@id=\"add-to-cart-or-refresh\"]/div[2]/div/div[2]/button";
+
+
 }
