@@ -1,14 +1,21 @@
 import Configuration.Configuration;
 import io.cucumber.java.After;
+import io.cucumber.java.an.E;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pageNavigation.PageElements;
+import pageNavigation.SuccessfulMessages;
+import pages.IdentityPage;
+import pages.LoginPage;
+import pages.MainPage;
+import pages.MyAccountPage;
 import testData.TestData;
 import urls.Urls;
 
@@ -18,96 +25,51 @@ import java.util.Map;
 import static org.junit.Assert.*;
 
 public class TC002 {
-    private final WebDriver driver;
-    private String FirstName;
-    private String LastName;
+    private WebDriver driver;
 
-    public TC002() {
+    public void setUp() {
         Configuration configuration = new Configuration();
         driver = configuration.getDriver();
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = PageElements.MainPageSignInButtonXpath)
-    private WebElement MainPageSignInButton;
-    @FindBy(xpath = PageElements.LoginPageEmailLoginInputXpath)
-    private WebElement LoginPageEmailInput;
-    @FindBy(xpath = PageElements.LoginPagePasswordLoginInputXpath)
-    private WebElement LoginPagePasswordInput;
-    @FindBy(xpath = PageElements.LoginPageSingInButtonXpath)
-    private WebElement LoginPageSingInButton;
-    @FindBy(xpath = PageElements.ClothesButtonXpath)
-    private WebElement ClothesButton;
-    @FindBy(xpath = PageElements.AccessoriesButtonXpath)
-    private WebElement AccessoriesButton;
-    @FindBy(xpath = PageElements.ArtButtonXpath)
-    private WebElement ArtButton;
-    @FindBy(xpath =  PageElements.MyAccountPageInformationButtonXpath)
-    private WebElement MyAccountPageInformationButton;
-    @FindBy(xpath = PageElements.IdentityPageFirstNameInputXpath)
-    private WebElement IdentityPageFirstNameInput;
-    @FindBy(xpath = PageElements.IdentityPageLastNameInputXpath)
-    private WebElement IdentityPageLastNameInput;
-    @FindBy(xpath = PageElements.IdentityPagePasswordInputXpath)
-    private WebElement IdentityPagePasswordInput;
-    @FindBy(xpath = PageElements.IdentityPageDataPrivacyCheckBoxXpath)
-    private WebElement IdentityPageDataPrivacyCheckBox;
-    @FindBy(xpath = PageElements.IdentityPageTermsAndConditionsCheckBoxXpath)
-    private WebElement IdentityPageTermsAndConditionsCheckBox;
-    @FindBy(xpath = PageElements.IdentityPageSaveButtonXpath)
-    private WebElement IdentityPageSaveButton;
-    @FindBy(xpath = PageElements.IdentitySuccessMessageXpath)
-    private WebElement IdentitySuccessMessage;
-    @FindBy(xpath = PageElements.DesktopUserInfoXpath)
-    private WebElement DesktopUserInfo;
-
-//    @After
-//    public void tearDown(){
-//        driver.quit();
-//    }
-
-    @Given("TC002 user on store main page")
-    public void given() {
-        driver.get(Urls.mainPageUrl);
-    }
-
-    @And("TC002 user log in with valid credentials")
+    @Given("TC002 user log in with valid credentials")
     public void logIn() {
-        MainPageSignInButton.click();
-//        assertEquals("The current url does not match expected Loin Page Url", Urls.loginPageUrl, driver.getCurrentUrl());
-        assertTrue("Email input is not empty", LoginPageEmailInput.getText().isEmpty());
-        assertTrue("Password input is not empty", LoginPageEmailInput.getText().isEmpty());
-        LoginPageEmailInput.sendKeys(TestData.email);
-        LoginPagePasswordInput.sendKeys(TestData.password);
-        LoginPageSingInButton.click();
-//        assertEquals("The current url does not match expected my account page url", Urls.myAccountPageUrl, driver.getCurrentUrl());
+        setUp();
+        driver.get(Urls.mainPageUrl);
+        MainPage mainPage = new MainPage(driver);
+        mainPage.ClickSingInButton();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.loginAs(TestData.email, TestData.password);
     }
+
     @When("TC002 user go to information page")
-    public void goToInformationPage(){
-        MyAccountPageInformationButton.click();
-//        assertEquals("The current url does not match identity page url", Urls.identityPageUrl,driver.getCurrentUrl());
+    public void goToInformationPage() {
+        MyAccountPage myAccountPage = new MyAccountPage(driver);
+        myAccountPage.ClickMyAccountInformation();
     }
+
     @And("TC002 user make changes in accordance with following data:")
-    public void changeData(List<Map<String, String>> userDetails){
-        assertNotNull("First name input is empty",IdentityPageFirstNameInput.getText());
-        assertNotNull("Second name input is empty",IdentityPageLastNameInput.getText());
-        IdentityPageFirstNameInput.clear();
-        IdentityPageLastNameInput.clear();
-        IdentityPageFirstNameInput.sendKeys(userDetails.get(0).get("First name"));
-        FirstName=userDetails.get(0).get("First name");
-        LastName=userDetails.get(0).get("Last name");
-        IdentityPageLastNameInput.sendKeys(userDetails.get(0).get("Last name"));
-        IdentityPagePasswordInput.sendKeys(TestData.password);
-        IdentityPageDataPrivacyCheckBox.click();
-        IdentityPageTermsAndConditionsCheckBox.click();
-        IdentityPageSaveButton.click();
+    public void changeData(List<Map<String, String>> userDetails) {
+        IdentityPage identityPage = new IdentityPage(driver);
+        identityPage.changeFirstName(userDetails.get(0).get("First name"));
+        identityPage.changeLastName(userDetails.get(0).get("Last name"));
+        identityPage.inputPassword(TestData.password);
+        identityPage.agreeDataPrivacy();
+        identityPage.agreeTermsAndConditions();
+        identityPage.clickSaveButton();
     }
+
     @Then("TC002 user get success message")
-    public void checkSuccessMessage(){
-        assertEquals("Wrong success message","Information successfully updated.",IdentitySuccessMessage.getText());
+    public void checkSuccessMessage() {
+        IdentityPage identityPage = new IdentityPage(driver);
+        assertEquals("Wrong success message", SuccessfulMessages.ChangeUserInfoSuccessMessage, identityPage.checkSuccessMessage());
     }
-    @And("TC002 user desktop info has been changed")
-    public void checkUserDesktopInfo(){
-        assertEquals("Wrong user desktop info", DesktopUserInfo.getText(),FirstName+" "+LastName);
+
+    @And("TC002 user desktop info has been changed in accordance with following data:")
+    public void checkUserDesktopInfo(List<Map<String, String>> userDetails) {
+        LoginPage loginPage = new LoginPage(driver);
+        String ExpectedName = userDetails.get(0).get("First name") + " " + userDetails.get(0).get("Last name");
+        assertEquals("Wrong User name displayed", loginPage.getLoggedUserName(), ExpectedName);
     }
 }
