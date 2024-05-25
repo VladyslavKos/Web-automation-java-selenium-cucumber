@@ -4,8 +4,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class PageElements {
-    // !!!for bigger project will be great to sort elements per pages for ex all elements from main page in MainPage.java and e.
+    // for bigger project will be great to sort elements per pages for ex all elements from main page in MainPage.java and e.
     public static final String MainPageSignInButtonXpath = "//*[@id=\"_desktop_user_info\"]/div/a/span";
+    public static final String SingOutButtonXpath = "//*[@id=\"_desktop_user_info\"]/div/a[1]";
     public static final String LoginPageEmailLoginInputXpath = "//*[@id=\"field-email\"]";
     public static final String LoginPagePasswordLoginInputXpath = "//*[@id=\"field-password\"]";
     public static final String LoginPageSingInButtonXpath = "//*[@id=\"submit-login\"]";

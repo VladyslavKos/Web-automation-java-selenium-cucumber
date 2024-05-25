@@ -10,28 +10,27 @@ import pageNavigation.PageElements;
 import testData.TestData;
 
 public class LoginPage {
-    @FindBy(xpath = "//*[@id=\\\"_desktop_user_info\\\"]/div/a/span")
-    private WebElement MainPageSignInButton;
-    @FindBy(xpath = "//*[@id=\"field-email\"]")
+    @FindBy(xpath = PageElements.LoginPageEmailLoginInputXpath)
     private WebElement LoginPageEmailInput;
-    @FindBy(xpath = "//*[@id=\"field-password\"]")
+    @FindBy(xpath = PageElements.LoginPagePasswordLoginInputXpath)
     private WebElement LoginPagePasswordInput;
-    @FindBy(xpath = "//*[@id=\"submit-login\"]")
+    @FindBy(xpath = PageElements.LoginPageSingInButtonXpath)
     private WebElement LoginPageSingInButton;
     @FindBy(xpath = PageElements.DesktopUserInfoXpath)
     private WebElement DesktopUserInfo;
+    @FindBy(xpath = PageElements.SingOutButtonXpath)
+    private WebElement SingOutButton;
     private static WebDriver driver;
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
-    public void loginAs(String email, String password) {
 
+    public void loginAs(String email, String password) {
         LoginPageEmailInput.click();
         LoginPageEmailInput.clear();
         LoginPageEmailInput.sendKeys(email);
-
 
         LoginPagePasswordInput.click();
         LoginPagePasswordInput.clear();
@@ -39,7 +38,11 @@ public class LoginPage {
 
         LoginPageSingInButton.click();
     }
-    public String getLoggedUserName(){
+
+    public String getLoggedUserName() {
         return DesktopUserInfo.getText();
+    }
+    public void logOut(){
+        SingOutButton.click();
     }
 }
