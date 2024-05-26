@@ -1,10 +1,13 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pageNavigation.PageElements;
+
+import java.util.List;
 
 public class MainPage {
     private WebDriver driver;
@@ -18,7 +21,8 @@ public class MainPage {
     private WebElement ArtButton;
     @FindBy(xpath = PageElements.MyStoreLogoButtonXpath)
     private WebElement MyStoreLogoButton;
-
+    @FindBy(css = ".product-miniature.js-product-miniature")
+    private List<WebElement> MainPageProducts;
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
@@ -38,6 +42,13 @@ public class MainPage {
     }
     public void ClickLogo(){
         MyStoreLogoButton.click();
+    }
+    public List<WebElement> GetProducts(){
+        return MainPageProducts;
+    }
+    public void clickOnProduct(String cssSelector){
+        WebElement element = driver.findElement(By.cssSelector(cssSelector));
+        element.click();
     }
 //    @FindBy(xpath = PageElements.MainPageSignInButtonXpath)
 //    private WebElement MainPageSignInButton;

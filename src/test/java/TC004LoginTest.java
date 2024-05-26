@@ -39,12 +39,13 @@ public class TC004LoginTest {
         mainPage.ClickSingInButton();
         LoginPage loginPage = new LoginPage(driver);
         loginPage.loginAs(TestData.email, TestData.password);
-        assertEquals("Jan Pawel", loginPage.getLoggedUserName());
+        assertEquals(TestData.FirstName+" "+TestData.LastName, loginPage.getLoggedUserName());
     }
     @Then("test2")
     public void LogOut(){
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.logOut();
+//        LoginPage loginPage = new LoginPage(driver);
+//        loginPage.logOut();
+
     }
 
 

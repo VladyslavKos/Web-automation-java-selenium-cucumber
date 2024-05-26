@@ -32,6 +32,9 @@ public class TC002 {
         driver = configuration.getDriver();
         PageFactory.initElements(driver, this);
     }
+    public void tearDown(){
+        driver.quit();
+    }
 
     @Given("TC002 user log in with valid credentials")
     public void logIn() {
@@ -71,5 +74,6 @@ public class TC002 {
         LoginPage loginPage = new LoginPage(driver);
         String ExpectedName = userDetails.get(0).get("First name") + " " + userDetails.get(0).get("Last name");
         assertEquals("Wrong User name displayed", loginPage.getLoggedUserName(), ExpectedName);
+        tearDown();
     }
 }
