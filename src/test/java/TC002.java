@@ -26,13 +26,20 @@ import static org.junit.Assert.*;
 
 public class TC002 {
     private WebDriver driver;
+    MainPage mainPage;
+    LoginPage loginPage;
+    IdentityPage identityPage;
 
     public void setUp() {
         Configuration configuration = new Configuration();
         driver = configuration.getDriver();
         PageFactory.initElements(driver, this);
+        mainPage = new MainPage(driver);
+        loginPage = new LoginPage(driver);
+        identityPage = new IdentityPage(driver);
     }
-    public void tearDown(){
+
+    public void tearDown() {
         driver.quit();
     }
 
@@ -40,9 +47,7 @@ public class TC002 {
     public void logIn() {
         setUp();
         driver.get(Urls.mainPageUrl);
-        MainPage mainPage = new MainPage(driver);
         mainPage.ClickSingInButton();
-        LoginPage loginPage = new LoginPage(driver);
         loginPage.loginAs(TestData.email, TestData.password);
     }
 
@@ -54,7 +59,6 @@ public class TC002 {
 
     @And("TC002 user make changes in accordance with following data:")
     public void changeData(List<Map<String, String>> userDetails) {
-        IdentityPage identityPage = new IdentityPage(driver);
         identityPage.changeFirstName(userDetails.get(0).get("First name"));
         identityPage.changeLastName(userDetails.get(0).get("Last name"));
         identityPage.inputPassword(TestData.password);
@@ -65,13 +69,12 @@ public class TC002 {
 
     @Then("TC002 user get success message")
     public void checkSuccessMessage() {
-        IdentityPage identityPage = new IdentityPage(driver);
         assertEquals("Wrong success message", SuccessfulMessages.ChangeUserInfoSuccessMessage, identityPage.checkSuccessMessage());
     }
 
     @And("TC002 user desktop info has been changed in accordance with following data:")
     public void checkUserDesktopInfo(List<Map<String, String>> userDetails) {
-        LoginPage loginPage = new LoginPage(driver);
+
         String ExpectedName = userDetails.get(0).get("First name") + " " + userDetails.get(0).get("Last name");
         assertEquals("Wrong User name displayed", loginPage.getLoggedUserName(), ExpectedName);
         tearDown();
