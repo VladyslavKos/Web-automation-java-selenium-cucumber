@@ -31,6 +31,7 @@ public class IdentityPage {
     @FindBy(xpath = PageElements.IdentityPageNewPasswordInputXpath)
     private WebElement IdentityPageNewPassword;
 
+
     public void changeFirstName(String Firstname) {
         IdentityPageFirstNameInput.clear();
         IdentityPageFirstNameInput.sendKeys(Firstname);

@@ -1,4 +1,4 @@
-Feature: User details; add,modify remove
+Feature: User details, addresses; add,modify remove
 
   @TC002 @user_details
   Scenario: As user, I want to log in to store, and change personal data
@@ -12,7 +12,7 @@ Feature: User details; add,modify remove
       | First name | Last name |
       | Jan        | Pawel     |
 
-  @TC004 @log_in_test
+  @TC004 @log_in_test @change_password
   Scenario: As user, I want to log in, check my username, go to user details and change password, logout, login with new password, check username.
     Given TC004 user log in with valid credentials
     When TC004 user check username
@@ -21,3 +21,18 @@ Feature: User details; add,modify remove
     And TC004 user logout
     Then TC004 user log in with new password
     And TC004 user check username again
+
+  @TC005 @user_details
+  Scenario: User logs in, adds a new address, and verifies the address details
+    Given TC005 user logs in with valid credentials
+    And TC005 user clicks on the "Addresses" button
+    And TC005 user clicks on the  Create new address button
+    And TC005 user fills in the New Address form with the following details:
+      | Alias      | Address         | City   | Zip/Postal Code | Country   | Phone      |
+      | My Address | 123 Main Street | MyCity | 12345           | MyCountry | 1234567890 |
+
+    And TC005 user submits the form
+    Then TC005 user should see a success message
+    And TC005 user verifies that the added address details are correct:
+      | Alias      | Address         | City   | Zip/Postal Code | Country   | Phone      |
+      | My Address | 123 Main Street | MyCity | 12345           | MyCountry | 1234567890 |
