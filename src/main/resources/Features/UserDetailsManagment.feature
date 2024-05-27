@@ -14,8 +14,10 @@ Feature: User details; add,modify remove
 
   @TC004 @log_in_test
   Scenario: As user, I want to log in, check my username, go to user details and change password, logout, login with new password, check username.
-#    Given TC004 user on store main page
-#    When TC004 user log in with valid credentials
-#    Then TC004 user go to user details and change password
-    When test1
-    Then test2
+    Given TC004 user log in with valid credentials
+    When TC004 user check username
+    And TC004 user go to user details
+    And TC004 user changes password
+    And TC004 user logout
+    Then TC004 user log in with new password
+    And TC004 user check username again

@@ -38,7 +38,7 @@ public class TC003 {
 //    @FindBy(xpath = PageElements.ProductViewAddToCartButtonXpath)
 //    private WebElement ProductViewAddToCartButton;
 
-    @Given("TC003 logged user on main page")
+    @Given("TC003 logged in user on main page")
     public void loggIn() {
         setup();
         driver.get(Urls.mainPageUrl);

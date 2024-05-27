@@ -17,6 +17,7 @@ public class PageElements {
     public static final String IdentityPageFirstNameInputXpath = "//*[@id=\"field-firstname\"]";
     public static final String IdentityPageLastNameInputXpath = "//*[@id=\"field-lastname\"]";
     public static final String IdentityPagePasswordInputXpath = "//*[@id=\"field-password\"]";
+    public static final String IdentityPageNewPasswordInputXpath = "//*[@id=\"field-new_password\"]";
     public static final String IdentityPageDataPrivacyCheckBoxXpath = "//*[@id=\"customer-form\"]/div/div[9]/div[1]/span/label/input";
     public static final String IdentityPageTermsAndConditionsCheckBoxXpath = "//*[@id=\"customer-form\"]/div/div[11]/div[1]/span/label/input";
     public static final String IdentityPageSaveButtonXpath = "//*[@id=\"customer-form\"]/footer/button";

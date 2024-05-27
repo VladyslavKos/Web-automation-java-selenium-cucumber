@@ -28,29 +28,42 @@ public class IdentityPage {
     private WebElement IdentityPageSaveButton;
     @FindBy(xpath = PageElements.IdentitySuccessMessageXpath)
     private WebElement IdentitySuccessMessage;
+    @FindBy(xpath = PageElements.IdentityPageNewPasswordInputXpath)
+    private WebElement IdentityPageNewPassword;
 
-    public void changeFirstName(String Firstname){
+    public void changeFirstName(String Firstname) {
         IdentityPageFirstNameInput.clear();
         IdentityPageFirstNameInput.sendKeys(Firstname);
     }
-    public void changeLastName(String Lastname){
+
+    public void changeLastName(String Lastname) {
         IdentityPageLastNameInput.clear();
         IdentityPageLastNameInput.sendKeys(Lastname);
     }
-    public void inputPassword(String password){
+
+    public void inputPassword(String password) {
         IdentityPagePasswordInput.clear();
         IdentityPagePasswordInput.sendKeys(password);
     }
-    public void agreeDataPrivacy(){
+
+    public void agreeDataPrivacy() {
         IdentityPageDataPrivacyCheckBox.click();
     }
-    public void agreeTermsAndConditions(){
+
+    public void agreeTermsAndConditions() {
         IdentityPageTermsAndConditionsCheckBox.click();
     }
-    public void clickSaveButton(){
+
+    public void clickSaveButton() {
         IdentityPageSaveButton.click();
     }
-    public String checkSuccessMessage(){
-       return IdentitySuccessMessage.getText();
+
+    public String checkSuccessMessage() {
+        return IdentitySuccessMessage.getText();
+    }
+
+    public void inputNewPassword(String password) {
+        IdentityPageNewPassword.clear();
+        IdentityPageNewPassword.sendKeys(password);
     }
 }
