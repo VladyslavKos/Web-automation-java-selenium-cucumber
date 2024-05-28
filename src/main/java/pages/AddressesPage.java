@@ -12,9 +12,14 @@ public class AddressesPage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    @FindBy(xpath = PageElements.AddressesPageCreateNewAddressButtonXpath)
+    @FindBy(css = PageElements.AddressesPageCreateNewAddressButtonCSS)
     private WebElement createNewAddress;
+    @FindBy(xpath = PageElements.AddressPageEditButtonXpath)
+    private WebElement editButton;
     public void createNewAddress(){
         createNewAddress.click();
+    }
+    public void clickEditButton(){
+        editButton.click();
     }
 }

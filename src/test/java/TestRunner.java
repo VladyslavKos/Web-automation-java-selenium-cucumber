@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
         features = "src/main/resources/Features/",
         glue = "",
         plugin = {"pretty", "html:target/cucumber-reports"},
-        tags = "@TC004"
+        tags = "@TC005"
 )
 public class TestRunner {
 }

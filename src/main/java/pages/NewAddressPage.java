@@ -13,7 +13,7 @@ public class NewAddressPage {
         PageFactory.initElements(driver, this);
     }
     @FindBy(xpath = PageElements.NewAddressPageAliasInputXpath)
-    private WebElement AliasInput;
+    private WebElement aliasInput;
     @FindBy(xpath = PageElements.NewAddressPageFirstNameXpath)
     private WebElement firstNameInput;
     @FindBy(xpath = PageElements.NewAddressPageLastNameXpath)
@@ -32,5 +32,44 @@ public class NewAddressPage {
     private WebElement zipInput;
     @FindBy(xpath = PageElements.NewAddressPhoneXpath)
     private WebElement phoneInput;
-
+    @FindBy(xpath = PageElements.NewAddressPageSaveButtonXpath)
+    private WebElement NewAddressPageSaveButton;
+    @FindBy(xpath = PageElements.NewAddressPageSuccessMessageXpath)
+    private WebElement NewAddressPageSuccessMessage;
+    public void inputAlias(String alias){
+        aliasInput.sendKeys(alias);
+    }
+    public void inputFirstName(String name){
+        firstNameInput.sendKeys(name);
+    }
+    public void inputLastName(String lastName){
+        lastNameInput.sendKeys(lastName);
+    }
+    public void inputCompany(String company){
+        companyInput.sendKeys(company);
+    }
+    public void inputVatNumber(String vat){
+        vatNumberInput.sendKeys(vat);
+    }
+    public void inputAddress(String address){
+        addressInput.sendKeys(address);
+    }
+    public void inputAddressCompany(String complementAddress){
+        addressComplementInput.sendKeys(complementAddress);
+    }
+    public void inputCity(String city){
+        cityInput.sendKeys(city);
+    }
+    public void inputZipCode(String zipCode){
+        zipInput.sendKeys(zipCode);
+    }
+    public void inputPhone(String phone){
+        phoneInput.sendKeys(phone);
+    }
+    public void clickSaveButton(){
+        NewAddressPageSaveButton.click();
+    }
+    public String getSuccessMessage(){
+       return NewAddressPageSuccessMessage.getText();
+    }
 }

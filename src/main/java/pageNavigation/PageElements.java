@@ -1,5 +1,6 @@
 package pageNavigation;
 
+import com.google.common.base.internal.Finalizer;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -23,18 +24,20 @@ public class PageElements {
     public static final String IdentityPageSaveButtonXpath = "//*[@id=\"customer-form\"]/footer/button";
     public static final String IdentitySuccessMessageXpath = "//*[@id=\"notifications\"]/div/article/ul/li";
     public static final String MyAccountPageAddressesButtonXpath = "//*[@id=\"addresses-link\"]";
-    public static final String AddressesPageCreateNewAddressButtonXpath ="//*[@id=\"content\"]/div[3]/a";
+    public static final String AddressesPageCreateNewAddressButtonCSS = "[data-link-action='add-address']";
+    public static final String AddressPageEditButtonXpath = "//*[@data-link-action='your-action-value']";
     public static final String NewAddressPageAliasInputXpath = "//*[@id=\"field-alias\"]";
-    public static final String NewAddressPageFirstNameXpath=  "//*[@id=\"field-firstname\"]";
-    public static final String NewAddressPageLastNameXpath=  "//*[@id=\"field-lastname\"]";
-    public static final String NewAddressPageCompanyXpath=  "//*[@id=\"field-company\"]";
-    public static final String NewAddressPageVatNumberXpath=  "//*[@id=\"field-vat_number\"]";
-    public static final String NewAddressPageAddressXpath=  "//*[@id=\"field-address1\"]";
-    public static final String NewAddressPageAddressComplementXpath=  "//*[@id=\"field-address2\"]";
-    public static final String NewAddressPageCityXpath=  "//*[@id=\"field-city\"]";
-    public static final String NewAddressZipXpath=  "//*[@id=\"field-postcode\"]";
-    public static final String NewAddressPhoneXpath=  "//*[@id=\"field-phone\"]";
-
+    public static final String NewAddressPageFirstNameXpath = "//*[@id=\"field-firstname\"]";
+    public static final String NewAddressPageLastNameXpath = "//*[@id=\"field-lastname\"]";
+    public static final String NewAddressPageCompanyXpath = "//*[@id=\"field-company\"]";
+    public static final String NewAddressPageVatNumberXpath = "//*[@id=\"field-vat_number\"]";
+    public static final String NewAddressPageAddressXpath = "//*[@id=\"field-address1\"]";
+    public static final String NewAddressPageAddressComplementXpath = "//*[@id=\"field-address2\"]";
+    public static final String NewAddressPageCityXpath = "//*[@id=\"field-city\"]";
+    public static final String NewAddressZipXpath = "//*[@id=\"field-postcode\"]";
+    public static final String NewAddressPhoneXpath = "//*[@id=\"field-phone\"]";
+    public static final String NewAddressPageSaveButtonXpath = "//*[@id=\"content\"]/div/div/form/footer/button";
+    public static final String NewAddressPageSuccessMessageXpath = "//*[@id=\"notifications\"]/div/article/ul/li";
     public static final String DesktopUserInfoXpath = "//*[@id=\"_desktop_user_info\"]/div/a[2]/span";
     public static final String MyStoreLogoButtonXpath = "//*[@id=\"_desktop_logo\"]/a/img";
     public static final String ProductViewAddToCartButtonXpath = "//*[@id=\"add-to-cart-or-refresh\"]/div[2]/div/div[2]/button";
