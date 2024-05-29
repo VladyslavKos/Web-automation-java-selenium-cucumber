@@ -21,7 +21,7 @@ public class MainPage {
     private WebElement ArtButton;
     @FindBy(xpath = PageElements.MyStoreLogoButtonXpath)
     private WebElement MyStoreLogoButton;
-    @FindBy(css = ".product-miniature.js-product-miniature")
+    @FindBy(css = PageElements.MainPageProductsList)
     private List<WebElement> MainPageProducts;
 
     public MainPage(WebDriver driver) {
@@ -46,10 +46,10 @@ public class MainPage {
     public List<WebElement> GetProducts(){
         return MainPageProducts;
     }
-    public void clickOnProduct(String cssSelector){
-        WebElement element = driver.findElement(By.cssSelector(cssSelector));
-        element.click();
+    public void clickOnProduct(int number){
+        GetProducts().get(number).click();
     }
+
 //    @FindBy(xpath = PageElements.MainPageSignInButtonXpath)
 //    private WebElement MainPageSignInButton;
 //    @FindBy(xpath = PageElements.LoginPageEmailLoginInputXpath)

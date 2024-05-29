@@ -41,6 +41,9 @@ public class PageElements {
     public static final String DesktopUserInfoXpath = "//*[@id=\"_desktop_user_info\"]/div/a[2]/span";
     public static final String MyStoreLogoButtonXpath = "//*[@id=\"_desktop_logo\"]/a/img";
     public static final String ProductViewAddToCartButtonXpath = "//*[@id=\"add-to-cart-or-refresh\"]/div[2]/div/div[2]/button";
-    public static final String MainPageProducts = "js-product product col-xs-6 col-lg-4 col-xl-3";
+    public static final String MainPageProductsList = "[class='thumbnail product-thumbnail']";
+    public static final String ProductPageTouchSpinUpCSS = "[class='material-icons touchspin-up']";
+    public static final String ProductPageTouchSpinDownCSS = "[class='material-icons touchspin-down']";
+    public static final String ProductPageNumberOfItemsCSS = "[class='input-group form-control']";
 
 }

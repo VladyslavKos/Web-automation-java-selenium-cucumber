@@ -74,7 +74,6 @@ public class TC002 {
 
     @And("TC002 user desktop info has been changed in accordance with following data:")
     public void checkUserDesktopInfo(List<Map<String, String>> userDetails) {
-
         String ExpectedName = userDetails.get(0).get("First name") + " " + userDetails.get(0).get("Last name");
         assertEquals("Wrong User name displayed", loginPage.getLoggedUserName(), ExpectedName);
         tearDown();

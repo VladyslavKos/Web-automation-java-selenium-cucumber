@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageNavigation.PageElements;
 import pageNavigation.Products;
+import pages.IdentityPage;
 import pages.LoginPage;
 import pages.MainPage;
 import testData.TestData;
@@ -23,11 +24,16 @@ import static org.openqa.selenium.By.cssSelector;
 public class TC003 {
     private WebDriver driver;
 
-    public void setup() {
+    MainPage mainPage;
+    LoginPage loginPage;
+    IdentityPage identityPage;
+    public void setUp() {
         Configuration configuration = new Configuration();
         driver = configuration.getDriver();
         PageFactory.initElements(driver, this);
-//        WebDriverWait wait = new WebDriverWait(driver,10);
+        mainPage = new MainPage(driver);
+        loginPage = new LoginPage(driver);
+        identityPage = new IdentityPage(driver);
     }
 //    @FindBy(xpath = Products.MainPageTShirtXpath)
 //    private WebElement MainPageTShirt;
@@ -40,21 +46,16 @@ public class TC003 {
 
     @Given("TC003 logged in user on main page")
     public void loggIn() {
-        setup();
+        setUp();
         driver.get(Urls.mainPageUrl);
-        MainPage mainPage = new MainPage(driver);
         mainPage.ClickSingInButton();
-        LoginPage loginPage = new LoginPage(driver);
         loginPage.loginAs(TestData.email, TestData.password);
+    }
+
+    @When("TC003 user click logo and click product {int}")
+    public void searchForProduct(int productIndex) {
         mainPage.ClickLogo();
+        mainPage.clickOnProduct(productIndex);
     }
 
-    @When("TC003 user search for products")
-    public void searchForProduct() {
-        MainPage mainPage = new MainPage(driver);
-        System.out.println(mainPage.GetProducts());
-        String element = String.valueOf(mainPage.GetProducts().get(1));
-
-//        mainPage.clickOnProduct(element);
-    }
 }
