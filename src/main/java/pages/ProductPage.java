@@ -8,24 +8,48 @@ import pageNavigation.PageElements;
 
 public class ProductPage {
     private WebDriver driver;
-    public ProductPage(WebDriver driver){
+
+    public ProductPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
     @FindBy(css = PageElements.ProductPageTouchSpinUpCSS)
     private WebElement spinUp;
     @FindBy(css = PageElements.ProductPageTouchSpinDownCSS)
     private WebElement spinDown;
     @FindBy(css = PageElements.ProductPageNumberOfItemsCSS)
     private WebElement numberOfItems;
-    public void clickSpinUp(){
+    @FindBy(css = PageElements.ProductPageAddToCartCSS)
+    private WebElement addToCart;
+    @FindBy(xpath = PageElements.ProductPageProceedToCheckoutCSS)
+    private WebElement proceedToCheckout;
+
+    public void clickSpinUp() {
         spinUp.click();
     }
-    public void clickSpinDown(){
+
+    public void clickSpinDown() {
         spinDown.click();
     }
-    public void inputNumberOfItems(String number){
+
+    public String getNumberOfChosenItems() {
+        return numberOfItems.getText();
+    }
+    public void clearNumberOfTimes(){
         numberOfItems.clear();
+    }
+
+    public void inputNumberOfItems(String number) {
         numberOfItems.sendKeys(number);
     }
+
+    public void clickAddToCart() {
+        addToCart.click();
+    }
+
+    public void clickAddToCart2() {
+        proceedToCheckout.click();
+    }
+
 }

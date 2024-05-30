@@ -45,5 +45,17 @@ public class PageElements {
     public static final String ProductPageTouchSpinUpCSS = "[class='material-icons touchspin-up']";
     public static final String ProductPageTouchSpinDownCSS = "[class='material-icons touchspin-down']";
     public static final String ProductPageNumberOfItemsCSS = "[class='input-group form-control']";
+    public static final String ProductPageAddToCartCSS = "[class='btn btn-primary add-to-cart']";
+    public static final String ProductPageProceedToCheckoutCSS = "//*[@id=\"blockcart-modal\"]/div/div/div[2]/div/div[2]/div/div/a";
+    public static final String CartPageProceedToCheckoutCSS = "[class='btn btn-primary']";
+    public static final String OrderPageDefaultAddressCSS = "[class='js-address-item address-item selected']";
+    public static final String OrderPageAddressContinueCSS = "[class='btn btn-primary continue float-xs-right']";
+    public static final String OrderPageShipmentContinueXpath = "//*[@id=\"js-delivery\"]/button";
+    public static final String OrderPageDefaultShipmentCSS = "[class='custom-radio float-xs-left']";
+    public static final String OrderPagePayByBankXpath = "[class='ps-shown-by-js ']";
+    public static final String OrderPageAgreeTACXpath = "[class='ps-shown-by-js']";
+    public static final String OrderPagePlaceOrderCSS = "[class='btn btn-primary center-block']";
+    public static final String OrderConfirmationSuccessMessageCSS = "[class='h1 card-title']";
+
 
 }

@@ -1,17 +1,11 @@
 import Configuration.Configuration;
-import io.cucumber.java.After;
-import io.cucumber.java.an.E;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import pageNavigation.PageElements;
-import pageNavigation.SuccessfulMessages;
+import pageNavigation.Messages;
 import pages.IdentityPage;
 import pages.LoginPage;
 import pages.MainPage;
@@ -69,7 +63,7 @@ public class TC002 {
 
     @Then("TC002 user get success message")
     public void checkSuccessMessage() {
-        assertEquals("Wrong success message", SuccessfulMessages.ChangeUserInfoSuccessMessage, identityPage.checkSuccessMessage());
+        assertEquals("Wrong success message", Messages.ChangeUserInfoSuccessMessage, identityPage.checkSuccessMessage());
     }
 
     @And("TC002 user desktop info has been changed in accordance with following data:")

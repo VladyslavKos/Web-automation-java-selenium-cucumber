@@ -85,5 +85,6 @@ public class TC004 {
         identityPage.agreeTermsAndConditions();
         identityPage.agreeDataPrivacy();
         identityPage.clickSaveButton();
+        tearDown();
     }
 }

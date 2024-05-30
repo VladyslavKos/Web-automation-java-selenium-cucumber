@@ -2,11 +2,9 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import pageNavigation.SuccessfulMessages;
+import pageNavigation.Messages;
 import pages.*;
 import Configuration.Configuration;
 import testData.TestData;
@@ -38,6 +36,9 @@ public class TC005 {
         myAccountPage = new MyAccountPage(driver);
         addressesPage = new AddressesPage(driver);
         newAddressPage = new NewAddressPage(driver);
+    }
+    public void tearDown() {
+        driver.quit();
     }
 
     @Given("TC005 user logs in with valid credentials")
@@ -74,10 +75,11 @@ public class TC005 {
 
     @Then("TC005 user should see a success message")
     public void checkSuccessMessage() {
-        assertEquals("Wrong success message", SuccessfulMessages.AddNewAddressSuccessMessage, newAddressPage.getSuccessMessage());
+        assertEquals("Wrong success message", Messages.AddNewAddressSuccessMessage, newAddressPage.getSuccessMessage());
     }
     @And("TC005 user verifies that the added address details are correct:")
     public void verifyAddressData(List<Map<String, String>> details){
-        System.out.println("lol");
+        tearDown();
     }
+
 }
