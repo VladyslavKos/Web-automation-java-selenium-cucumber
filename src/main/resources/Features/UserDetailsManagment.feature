@@ -33,6 +33,6 @@ Feature: User details, addresses; add,modify remove
 
     And TC005 user submits the form
     Then TC005 user should see a success message
-#    And TC005 user verifies that the added address details are correct:
-#      | Alias      | Address         | City   | Zip/Postal Code | Phone      |
-#      | My Address | 123 Main Street | MyCity | 12345           | 1234567890 |
+    And TC005 user verifies that the added address details are correct:
+      | Alias      | Address         | City   | Zip/Postal Code | Phone      |
+      | My Address | 123 Main Street | MyCity | 12345           | 1234567890 |

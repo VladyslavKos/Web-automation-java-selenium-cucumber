@@ -6,6 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pageNavigation.PageElements;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class NewAddressPage {
     private WebDriver driver;
     public NewAddressPage(WebDriver driver){
@@ -71,5 +74,14 @@ public class NewAddressPage {
     }
     public String getSuccessMessage(){
        return NewAddressPageSuccessMessage.getText();
+    }
+    @FindBy(css = "[class='address-body']")
+    private List<WebElement> getAddressData;
+    public List<String> getAddressDataText() {
+        List<String> addressesText = new ArrayList<>();
+        for (WebElement element : getAddressData) {
+            addressesText.add(element.getText());
+        }
+        return addressesText;
     }
 }

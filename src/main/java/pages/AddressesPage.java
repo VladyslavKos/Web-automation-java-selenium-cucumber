@@ -6,6 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pageNavigation.PageElements;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AddressesPage {
     private WebDriver driver;
     public AddressesPage(WebDriver driver){
@@ -16,10 +19,12 @@ public class AddressesPage {
     private WebElement createNewAddress;
     @FindBy(xpath = PageElements.AddressPageEditButtonXpath)
     private WebElement editButton;
+
     public void createNewAddress(){
         createNewAddress.click();
     }
     public void clickEditButton(){
         editButton.click();
     }
+
 }

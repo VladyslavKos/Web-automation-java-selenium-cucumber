@@ -24,6 +24,7 @@ public class TC005 {
     MyAccountPage myAccountPage;
     AddressesPage addressesPage;
     NewAddressPage newAddressPage;
+    EditAddressPage editAddressPage;
 
     public void setUp() {
         configuration = new Configuration();
@@ -36,6 +37,7 @@ public class TC005 {
         myAccountPage = new MyAccountPage(driver);
         addressesPage = new AddressesPage(driver);
         newAddressPage = new NewAddressPage(driver);
+        editAddressPage = new EditAddressPage(driver);
     }
     public void tearDown() {
         driver.quit();
@@ -79,7 +81,12 @@ public class TC005 {
     }
     @And("TC005 user verifies that the added address details are correct:")
     public void verifyAddressData(List<Map<String, String>> details){
-        tearDown();
+        //need to solve way to check if every record is correct
+        System.out.println(newAddressPage.getAddressDataText());
+        System.out.println(newAddressPage.getAddressDataText().get(6));
+        editAddressPage.goToEdit();
+        System.out.println(editAddressPage.getAlias());
+//        tearDown();
     }
 
 }
