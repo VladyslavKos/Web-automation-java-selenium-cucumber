@@ -81,12 +81,13 @@ public class TC005 {
     }
     @And("TC005 user verifies that the added address details are correct:")
     public void verifyAddressData(List<Map<String, String>> details){
-        //need to solve way to check if every record is correct
-        System.out.println(newAddressPage.getAddressDataText());
-        System.out.println(newAddressPage.getAddressDataText().get(6));
-        editAddressPage.goToEdit();
-        System.out.println(editAddressPage.getAlias());
-//        tearDown();
+//        //need to solve way to check if every record is correct
+//        System.out.println(newAddressPage.getAddressDataText());
+//        System.out.println(newAddressPage.getAddressDataText().get(6));
+//        editAddressPage.goToEdit();
+//        System.out.println(editAddressPage.getAlias());
+        // to finish
+        tearDown();
     }
 
 }

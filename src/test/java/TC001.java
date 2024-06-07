@@ -60,6 +60,6 @@ public class TC001 {
     public void clickLogo() {
         mainPage.ClickLogo();
 //        assertEquals("The current url doesn't match Main page usrl", Urls.mainPageUrl, driver.getCurrentUrl());
-//        tearDown();
+        tearDown();
     }
 }
