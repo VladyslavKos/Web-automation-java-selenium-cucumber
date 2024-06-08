@@ -21,6 +21,8 @@ public class MainPage {
     private WebElement ArtButton;
     @FindBy(xpath = PageElements.MyStoreLogoButtonXpath)
     private WebElement MyStoreLogoButton;
+    @FindBy(xpath = PageElements.MainPageCreateAccountButtonXpath)
+    private WebElement CreateAccountButton;
     @FindBy(css = PageElements.MainPageProductsList)
     private List<WebElement> MainPageProducts;
 
@@ -48,5 +50,8 @@ public class MainPage {
     }
     public void clickOnProduct(int number){
         GetProducts().get(number).click();
+    }
+    public void clickCreateAccountButton(){
+        CreateAccountButton.click();
     }
 }

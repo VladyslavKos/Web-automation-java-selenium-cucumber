@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 public class PageElements {
     // for bigger project will be great to sort elements per pages for ex all elements from main page in MainPage.java and e.
     public static final String MainPageSignInButtonXpath = "//*[@id=\"_desktop_user_info\"]/div/a/span";
+    public static final String MainPageCreateAccountButtonXpath = "//*[@id=\"content\"]/div/a";
     public static final String SingOutButtonXpath = "//*[@id=\"_desktop_user_info\"]/div/a[1]";
     public static final String LoginPageEmailLoginInputXpath = "//*[@id=\"field-email\"]";
     public static final String LoginPagePasswordLoginInputXpath = "//*[@id=\"field-password\"]";
@@ -56,6 +57,11 @@ public class PageElements {
     public static final String OrderPageAgreeTACXpath = "[class='ps-shown-by-js']";
     public static final String OrderPagePlaceOrderCSS = "[class='btn btn-primary center-block']";
     public static final String OrderConfirmationSuccessMessageCSS = "[class='h1 card-title']";
+    public static final String CreateAccountFirstNameInputXpath = "//*[@id=\"field-firstname\"]";
+    public static final String CreateAccountLastNameInputXpath = "//*[@id=\"field-lastname\"]";
+    public static final String CreateAccountEmailInputXpath = "//*[@id=\"field-email\"]";
+    public static final String CreateAccountPasswordInputXpath = "//*[@id=\"field-password\"]";
+//    note: consider to replace agree Privacy policy checkbox and ec with css
 
 
 }

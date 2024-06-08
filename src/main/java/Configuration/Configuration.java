@@ -16,6 +16,7 @@ public class Configuration {
         if (driver == null) {
 //            System.setProperty("webdriver.chrome.driver", "src/main/resources/Drivers/chromedriver");
 
+            //Proxy server, uncomment to enable
 //            Proxy proxy = new Proxy();
 //            proxy.setAutodetect(false);
 //            proxy.setHttpProxy("127.0.0.1:8080");

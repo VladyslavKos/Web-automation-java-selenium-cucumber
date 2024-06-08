@@ -36,3 +36,13 @@ Feature: User details, addresses; add,modify remove
     And TC005 user verifies that the added address details are correct:
       | Alias      | Address         | City   | Zip/Postal Code | Phone      |
       | My Address | 123 Main Street | MyCity | 12345           | 1234567890 |
+
+  @TC006 @create_account
+  Scenario: User create account, log in and check if user data is correct
+    When TC006 user create account using data:
+      | First name | Last name | Email            | Password         |
+      | Jan        | Pawel     | test735@test.com | test735@test.com |
+    And TC006 user log in
+    Then TC006 user check if user data is correct:
+      | First name | Last name | Email            | Password         |
+      | Jan        | Pawel     | test735@test.com | test735@test.com |
