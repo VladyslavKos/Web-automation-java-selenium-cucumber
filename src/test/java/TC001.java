@@ -1,13 +1,19 @@
 import Configuration.Configuration;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
 import pages.LoginPage;
 import pages.MainPage;
 import testData.TestData;
 import urls.Urls;
+
 import java.util.concurrent.TimeUnit;
+
 import static org.junit.Assert.assertEquals;
 
 
@@ -22,6 +28,7 @@ public class TC001 {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         mainPage = new MainPage(driver);
+
     }
 
     public void tearDown() {
