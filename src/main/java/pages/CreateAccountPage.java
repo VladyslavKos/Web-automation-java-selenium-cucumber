@@ -20,6 +20,12 @@ public class CreateAccountPage {
     private WebElement emailInput;
     @FindBy(xpath = PageElements.CreateAccountPasswordInputXpath)
     private WebElement passwordInput;
+    @FindBy(css = PageElements.AgreePrivacyPolicyCSS)
+    private WebElement agreePP;
+    @FindBy(css = PageElements.CustomerDataPrivacyCSS)
+    private WebElement agreeCDP;
+    @FindBy(css  = PageElements.SaveButtonCSS)
+    private WebElement saveButton;
 
     public void firstNameFill(String firstName){
         FirstNameInput.clear();
@@ -36,6 +42,15 @@ public class CreateAccountPage {
     public void passwordFill(String password){
         passwordInput.clear();
         passwordInput.sendKeys(password);
+    }
+    public void clickAgreePrivacyPolicy(){
+        agreePP.click();
+    }
+    public void clickCustomerDataPrivacy(){
+        agreeCDP.click();
+    }
+    public void clickSaveButton(){
+        saveButton.click();
     }
 
 }

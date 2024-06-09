@@ -39,10 +39,6 @@ Feature: User details, addresses; add,modify remove
 
   @TC006 @create_account
   Scenario: User create account, log in and check if user data is correct
-    When TC006 user create account using data:
-      | First name | Last name | Email            | Password         |
-      | Jan        | Pawel     | test735@test.com | test735@test.com |
+    When TC006 user create account using data
     And TC006 user log in
-    Then TC006 user check if user data is correct:
-      | First name | Last name | Email            | Password         |
-      | Jan        | Pawel     | test735@test.com | test735@test.com |
+    Then TC006 user check if user data is correct

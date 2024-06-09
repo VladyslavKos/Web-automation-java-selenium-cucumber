@@ -61,6 +61,9 @@ public class PageElements {
     public static final String CreateAccountLastNameInputXpath = "//*[@id=\"field-lastname\"]";
     public static final String CreateAccountEmailInputXpath = "//*[@id=\"field-email\"]";
     public static final String CreateAccountPasswordInputXpath = "//*[@id=\"field-password\"]";
+    public static final String AgreePrivacyPolicyCSS = "[name='psgdpr']";
+    public static final String CustomerDataPrivacyCSS = "[name='customer_privacy']";
+    public static final String SaveButtonCSS = "[class='btn btn-primary form-control-submit float-xs-right']";
 //    note: consider to replace agree Privacy policy checkbox and ec with css
 
 
