@@ -15,12 +15,11 @@ Feature: User details, addresses; add,modify remove
   @TC004 @log_in_test @change_password
   Scenario: As user, I want to log in, check my username, go to user details and change password, logout, login with new password, check username.
     Given TC004 user log in with valid credentials
-    When TC004 user check username
     And TC004 user go to user details
     And TC004 user changes password
     And TC004 user logout
     Then TC004 user log in with new password
-    And TC004 user check username again
+    And TC004 user check username
 
   @TC005 @user_details
   Scenario: User logs in, adds a new address, and verifies the address details

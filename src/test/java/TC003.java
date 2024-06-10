@@ -49,7 +49,7 @@ public class TC003 {
     public void loggIn() {
         setUp();
         driver.get(Urls.mainPageUrl);
-        mainPage.ClickSingInButton();
+        mainPage.clickSingInButton();
         loginPage.loginAs(TestData.email, TestData.password);
     }
 

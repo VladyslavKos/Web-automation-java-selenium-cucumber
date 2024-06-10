@@ -25,12 +25,14 @@ public class MainPage {
     private WebElement CreateAccountButton;
     @FindBy(css = PageElements.MainPageProductsList)
     private List<WebElement> MainPageProducts;
+    @FindBy(xpath = PageElements.SingOutButtonXpath)
+    private WebElement SingOutButton;
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    public void ClickSingInButton(){
+    public void clickSingInButton(){
         MainPageSignInButton.click();
     }
     public void ClickClothesButton(){
@@ -53,5 +55,8 @@ public class MainPage {
     }
     public void clickCreateAccountButton(){
         CreateAccountButton.click();
+    }
+    public void clickSingOutButton(){
+        SingOutButton.click();
     }
 }

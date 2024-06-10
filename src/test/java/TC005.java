@@ -47,7 +47,7 @@ public class TC005 {
     public void logIn() {
         setUp();
         driver.get(Urls.mainPageUrl);
-        mainPage.ClickSingInButton();
+        mainPage.clickSingInButton();
         loginPage.loginAs(TestData.email, TestData.password);
     }
 

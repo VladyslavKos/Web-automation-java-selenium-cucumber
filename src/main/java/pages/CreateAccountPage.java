@@ -8,10 +8,12 @@ import pageNavigation.PageElements;
 
 public class CreateAccountPage {
     private WebDriver driver;
-    public CreateAccountPage(WebDriver driver){
+
+    public CreateAccountPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
     @FindBy(xpath = PageElements.CreateAccountFirstNameInputXpath)
     private WebElement FirstNameInput;
     @FindBy(xpath = PageElements.CreateAccountLastNameInputXpath)
@@ -24,32 +26,52 @@ public class CreateAccountPage {
     private WebElement agreePP;
     @FindBy(css = PageElements.CustomerDataPrivacyCSS)
     private WebElement agreeCDP;
-    @FindBy(css  = PageElements.SaveButtonCSS)
+    @FindBy(css = PageElements.SaveButtonCSS)
     private WebElement saveButton;
 
-    public void firstNameFill(String firstName){
+    public void firstNameFill(String firstName) {
         FirstNameInput.clear();
         FirstNameInput.sendKeys(firstName);
     }
-    public void lastNameFill(String lastName){
+
+    public void lastNameFill(String lastName) {
         LastNameInput.clear();
         LastNameInput.sendKeys(lastName);
     }
-    public void emailFill(String email){
+
+    public void emailFill(String email) {
         emailInput.clear();
         emailInput.sendKeys(email);
     }
-    public void passwordFill(String password){
+
+    public void passwordFill(String password) {
         passwordInput.clear();
         passwordInput.sendKeys(password);
     }
-    public void clickAgreePrivacyPolicy(){
+
+    public void clickAgreePrivacyPolicy() {
         agreePP.click();
     }
-    public void clickCustomerDataPrivacy(){
+
+    public void clickCustomerDataPrivacy() {
         agreeCDP.click();
     }
-    public void clickSaveButton(){
+
+    public void clickSaveButton() {
+        saveButton.click();
+    }
+
+    public void registerAs(String firstName, String lastName, String email, String password) {
+        FirstNameInput.clear();
+        FirstNameInput.sendKeys(firstName);
+        LastNameInput.clear();
+        LastNameInput.sendKeys(lastName);
+        emailInput.clear();
+        emailInput.sendKeys(email);
+        passwordInput.clear();
+        passwordInput.sendKeys(password);
+        agreePP.click();
+        agreeCDP.click();
         saveButton.click();
     }
 

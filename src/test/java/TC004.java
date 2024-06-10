@@ -44,12 +44,8 @@ public class TC004 {
     public void LoginWithWalidCredentials() {
         setUp();
         driver.get(Urls.mainPageUrl);
-        mainPage.ClickSingInButton();
+        mainPage.clickSingInButton();
         loginPage.loginAs(TestData.email, TestData.password);
-    }
-
-    @When("TC004 user check username")
-    public void LogOut() {
         name = loginPage.getLoggedUserName();
     }
 
@@ -60,11 +56,7 @@ public class TC004 {
 
     @And("TC004 user changes password")
     public void changePassword() {
-        identityPage.inputPassword(TestData.password);
-        identityPage.inputNewPassword(TestData.newPassword);
-        identityPage.agreeTermsAndConditions();
-        identityPage.agreeDataPrivacy();
-        identityPage.clickSaveButton();
+        identityPage.changePassword(TestData.password, TestData.newPassword);
     }
 
     @And("TC004 user logout")
@@ -77,14 +69,10 @@ public class TC004 {
         loginPage.loginAs(TestData.email, TestData.newPassword);
     }
 
-    @And("TC004 user check username again")
+    @And("TC004 user check username")
     public void assertUserName() {
         assertEquals("Name doesn't match previously username", name, loginPage.getLoggedUserName());
-        identityPage.inputPassword(TestData.newPassword);
-        identityPage.inputNewPassword(TestData.password);
-        identityPage.agreeTermsAndConditions();
-        identityPage.agreeDataPrivacy();
-        identityPage.clickSaveButton();
+        identityPage.changePassword(TestData.newPassword, TestData.password);
         tearDown();
     }
 }

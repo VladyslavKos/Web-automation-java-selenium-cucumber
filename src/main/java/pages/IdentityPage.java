@@ -30,7 +30,26 @@ public class IdentityPage {
     private WebElement IdentitySuccessMessage;
     @FindBy(xpath = PageElements.IdentityPageNewPasswordInputXpath)
     private WebElement IdentityPageNewPassword;
-
+    public void changeData(String Firstname,String Lastname,String password){
+        IdentityPageFirstNameInput.clear();
+        IdentityPageFirstNameInput.sendKeys(Firstname);
+        IdentityPageLastNameInput.clear();
+        IdentityPageLastNameInput.sendKeys(Lastname);
+        IdentityPagePasswordInput.clear();
+        IdentityPagePasswordInput.sendKeys(password);
+        IdentityPageDataPrivacyCheckBox.click();
+        IdentityPageTermsAndConditionsCheckBox.click();
+        IdentityPageSaveButton.click();
+    }
+    public void changePassword(String OldPassword,String newPassword){
+        IdentityPagePasswordInput.clear();
+        IdentityPagePasswordInput.sendKeys(OldPassword);
+        IdentityPageNewPassword.clear();
+        IdentityPageNewPassword.sendKeys(newPassword);
+        IdentityPageDataPrivacyCheckBox.click();
+        IdentityPageTermsAndConditionsCheckBox.click();
+        IdentityPageSaveButton.click();
+    }
 
     public void changeFirstName(String Firstname) {
         IdentityPageFirstNameInput.clear();
