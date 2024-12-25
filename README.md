@@ -16,7 +16,7 @@ This project is a web automation framework designed to automate testing for web 
 
 ### Prerequisites
 
-- Java JDK 17 or higher
+- Java JDK 22 or higher
 - Maven
 - Web browser (Chrome)
 
