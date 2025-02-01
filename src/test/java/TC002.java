@@ -18,24 +18,7 @@ import java.util.Map;
 
 import static org.junit.Assert.*;
 
-public class TC002 {
-    private WebDriver driver;
-    MainPage mainPage;
-    LoginPage loginPage;
-    IdentityPage identityPage;
-
-    public void setUp() {
-        Configuration configuration = new Configuration();
-        driver = configuration.getDriver();
-        PageFactory.initElements(driver, this);
-        mainPage = new MainPage(driver);
-        loginPage = new LoginPage(driver);
-        identityPage = new IdentityPage(driver);
-    }
-
-    public void tearDown() {
-        driver.quit();
-    }
+public class TC002 extends Main{
 
     @Given("TC002 user log in with valid credentials")
     public void logIn() {

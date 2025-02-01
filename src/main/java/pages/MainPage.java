@@ -32,31 +32,40 @@ public class MainPage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    public void clickSingInButton(){
+
+    public void clickSingInButton() {
         MainPageSignInButton.click();
     }
-    public void ClickClothesButton(){
+
+    public void ClickClothesButton() {
         ClothesButton.click();
     }
-    public void ClickAccessoriesButton(){
+
+    public void ClickAccessoriesButton() {
         AccessoriesButton.click();
     }
-    public void ClickArtButton(){
+
+    public void ClickArtButton() {
         ArtButton.click();
     }
-    public void ClickLogo(){
+
+    public void ClickLogo() {
         MyStoreLogoButton.click();
     }
-    public List<WebElement> GetProducts(){
+
+    public List<WebElement> GetProducts() {
         return MainPageProducts;
     }
-    public void clickOnProduct(int number){
+
+    public void clickOnProduct(int number) {
         GetProducts().get(number).click();
     }
-    public void clickCreateAccountButton(){
+
+    public void clickCreateAccountButton() {
         CreateAccountButton.click();
     }
-    public void clickSingOutButton(){
+
+    public void clickSingOutButton() {
         SingOutButton.click();
     }
 }

@@ -4,14 +4,21 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pageNavigation.PageElements;
+
+import java.time.Duration;
 
 public class IdentityPage {
     private WebDriver driver;
 
+    WebDriverWait wait;
+
     public IdentityPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(4));
     }
 
     @FindBy(xpath = PageElements.IdentityPageFirstNameInputXpath)
@@ -30,8 +37,9 @@ public class IdentityPage {
     private WebElement IdentitySuccessMessage;
     @FindBy(xpath = PageElements.IdentityPageNewPasswordInputXpath)
     private WebElement IdentityPageNewPassword;
-    public void changeData(String Firstname,String Lastname,String password){
-        IdentityPageFirstNameInput.clear();
+
+    public void changeData(String Firstname, String Lastname, String password) {
+        wait.until(ExpectedConditions.visibilityOf(IdentityPageFirstNameInput)).clear();
         IdentityPageFirstNameInput.sendKeys(Firstname);
         IdentityPageLastNameInput.clear();
         IdentityPageLastNameInput.sendKeys(Lastname);
@@ -41,8 +49,9 @@ public class IdentityPage {
         IdentityPageTermsAndConditionsCheckBox.click();
         IdentityPageSaveButton.click();
     }
-    public void changePassword(String OldPassword,String newPassword){
-        IdentityPagePasswordInput.clear();
+
+    public void changePassword(String OldPassword, String newPassword) {
+        wait.until(ExpectedConditions.visibilityOf(IdentityPagePasswordInput)).clear();
         IdentityPagePasswordInput.sendKeys(OldPassword);
         IdentityPageNewPassword.clear();
         IdentityPageNewPassword.sendKeys(newPassword);
@@ -52,30 +61,30 @@ public class IdentityPage {
     }
 
     public void changeFirstName(String Firstname) {
-        IdentityPageFirstNameInput.clear();
+        wait.until(ExpectedConditions.visibilityOf(IdentityPageFirstNameInput)).clear();
         IdentityPageFirstNameInput.sendKeys(Firstname);
     }
 
     public void changeLastName(String Lastname) {
-        IdentityPageLastNameInput.clear();
+        wait.until(ExpectedConditions.visibilityOf(IdentityPageLastNameInput)).clear();
         IdentityPageLastNameInput.sendKeys(Lastname);
     }
 
     public void inputPassword(String password) {
-        IdentityPagePasswordInput.clear();
+        wait.until(ExpectedConditions.visibilityOf(IdentityPagePasswordInput)).clear();
         IdentityPagePasswordInput.sendKeys(password);
     }
 
     public void agreeDataPrivacy() {
-        IdentityPageDataPrivacyCheckBox.click();
+        wait.until(ExpectedConditions.visibilityOf(IdentityPageDataPrivacyCheckBox)).click();
     }
 
     public void agreeTermsAndConditions() {
-        IdentityPageTermsAndConditionsCheckBox.click();
+        wait.until(ExpectedConditions.visibilityOf(IdentityPageTermsAndConditionsCheckBox)).click();
     }
 
     public void clickSaveButton() {
-        IdentityPageSaveButton.click();
+        wait.until(ExpectedConditions.visibilityOf(IdentityPageSaveButton)).click();
     }
 
     public String checkSuccessMessage() {

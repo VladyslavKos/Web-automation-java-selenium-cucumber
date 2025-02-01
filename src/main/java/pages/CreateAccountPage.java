@@ -4,14 +4,22 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pageNavigation.PageElements;
+
+import java.time.Duration;
 
 public class CreateAccountPage {
     private WebDriver driver;
 
+    WebDriverWait wait;
+
     public CreateAccountPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     @FindBy(xpath = PageElements.CreateAccountFirstNameInputXpath)
@@ -30,21 +38,22 @@ public class CreateAccountPage {
     private WebElement saveButton;
 
     public void firstNameFill(String firstName) {
-        FirstNameInput.clear();
+        wait.until(ExpectedConditions.visibilityOf(FirstNameInput)).clear();
         FirstNameInput.sendKeys(firstName);
     }
 
     public void lastNameFill(String lastName) {
-        LastNameInput.clear();
+        wait.until(ExpectedConditions.visibilityOf(LastNameInput)).clear();
         LastNameInput.sendKeys(lastName);
     }
 
     public void emailFill(String email) {
-        emailInput.clear();
+        wait.until(ExpectedConditions.visibilityOf(emailInput)).clear();
         emailInput.sendKeys(email);
     }
 
     public void passwordFill(String password) {
+
         passwordInput.clear();
         passwordInput.sendKeys(password);
     }

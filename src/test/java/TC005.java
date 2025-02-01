@@ -16,32 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
 
-public class TC005 {
-    private static WebDriver driver;
-    MainPage mainPage;
-    LoginPage loginPage;
-    Configuration configuration;
-    MyAccountPage myAccountPage;
-    AddressesPage addressesPage;
-    NewAddressPage newAddressPage;
-    EditAddressPage editAddressPage;
-
-    public void setUp() {
-        configuration = new Configuration();
-        driver = configuration.getDriver();
-        PageFactory.initElements(driver, this);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        mainPage = new MainPage(driver);
-        loginPage = new LoginPage(driver);
-        myAccountPage = new MyAccountPage(driver);
-        addressesPage = new AddressesPage(driver);
-        newAddressPage = new NewAddressPage(driver);
-        editAddressPage = new EditAddressPage(driver);
-    }
-    public void tearDown() {
-        driver.quit();
-    }
+public class TC005 extends Main {
 
     @Given("TC005 user logs in with valid credentials")
     public void logIn() {
@@ -79,8 +54,9 @@ public class TC005 {
     public void checkSuccessMessage() {
         assertEquals("Wrong success message", Messages.AddNewAddressSuccessMessage, newAddressPage.getSuccessMessage());
     }
+
     @And("TC005 user verifies that the added address details are correct:")
-    public void verifyAddressData(List<Map<String, String>> details){
+    public void verifyAddressData(List<Map<String, String>> details) {
 //        //need to solve way to check if every record is correct
 //        System.out.println(newAddressPage.getAddressDataText());
 //        System.out.println(newAddressPage.getAddressDataText().get(6));

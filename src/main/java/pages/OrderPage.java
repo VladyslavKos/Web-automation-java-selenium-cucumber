@@ -9,10 +9,12 @@ import pageNavigation.PageElements;
 
 public class OrderPage {
     private WebDriver driver;
-    public OrderPage(WebDriver driver){
+
+    public OrderPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
     @FindBy(css = PageElements.OrderPageDefaultAddressCSS)
     private WebElement defaultAddress;
     @FindBy(css = PageElements.OrderPageAddressContinueCSS)
@@ -27,25 +29,32 @@ public class OrderPage {
     private WebElement agreeTermsAndConditions;
     @FindBy(css = PageElements.OrderPagePlaceOrderCSS)
     private WebElement placeOrder;
-    public void clickDefaultAddress(){
+
+    public void clickDefaultAddress() {
         defaultAddress.click();
     }
-    public void clickAddressContinue(){
+
+    public void clickAddressContinue() {
         addressContinue.click();
     }
-    public void clickDefaultShipment(){
+
+    public void clickDefaultShipment() {
         defaultShipment.click();
     }
-    public void clickShipmentContinue(){
+
+    public void clickShipmentContinue() {
         shipmentContinue.click();
     }
-    public void clickPayByBank(){
-       payByBank.click();
+
+    public void clickPayByBank() {
+        payByBank.click();
     }
-    public void clickAgreeTermsAndConditions(){
+
+    public void clickAgreeTermsAndConditions() {
         agreeTermsAndConditions.click();
     }
-    public void clickPlaceOrder(){
+
+    public void clickPlaceOrder() {
         placeOrder.click();
     }
 

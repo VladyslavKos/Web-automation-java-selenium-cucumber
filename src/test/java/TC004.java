@@ -16,29 +16,9 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.concurrent.TimeUnit;
 
-public class TC004 {
-    private static WebDriver driver;
-    MainPage mainPage;
-    LoginPage loginPage;
-    MyAccountPage myAccountPage;
-    IdentityPage identityPage;
+public class TC004 extends Main {
+
     String name;
-
-    public void setUp() {
-        Configuration configuration = new Configuration();
-        driver = configuration.getDriver();
-        PageFactory.initElements(driver, this);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-        mainPage = new MainPage(driver);
-        loginPage = new LoginPage(driver);
-        myAccountPage = new MyAccountPage(driver);
-        identityPage = new IdentityPage(driver);
-    }
-
-    public void tearDown() {
-        driver.quit();
-    }
 
     @Given("TC004 user log in with valid credentials")
     public void LoginWithWalidCredentials() {

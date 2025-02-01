@@ -9,13 +9,16 @@ import pageNavigation.PageElements;
 
 public class ShoppingCartPage {
     private WebDriver driver;
-    public ShoppingCartPage(WebDriver driver){
+
+    public ShoppingCartPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
     @FindBy(css = PageElements.CartPageProceedToCheckoutCSS)
     private WebElement proceedToCheckout;
-    public void clickProceedToCheckout(){
+
+    public void clickProceedToCheckout() {
         proceedToCheckout.click();
     }
 }

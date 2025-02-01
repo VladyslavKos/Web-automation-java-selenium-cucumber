@@ -19,23 +19,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 
-public class TC001 {
-    private WebDriver driver;
-    MainPage mainPage;
-
-    public void setUp() {
-        Configuration configuration = new Configuration();
-        driver = configuration.getDriver();
-        PageFactory.initElements(driver, this);
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-        mainPage = new MainPage(driver);
-
-    }
-
-    public void tearDown() {
-        driver.quit();
-    }
+public class TC001 extends Main {
 
     @When("TC001 User log in with walid credentials")
     public void logIn() {
@@ -49,7 +33,7 @@ public class TC001 {
     @And("TC001 User go to Clothes page")
     public void goToClothesPage() {
         mainPage.ClickClothesButton();
-        assertTrue("The current url does not match Clothes page url",  driver.getCurrentUrl().endsWith(Urls.clothesPageUrlShort));
+        assertTrue("The current url does not match Clothes page url", driver.getCurrentUrl().endsWith(Urls.clothesPageUrlShort));
     }
 
     @And("TC001 User go to Accessories page")
@@ -61,13 +45,13 @@ public class TC001 {
     @And("TC001 User go to Art page")
     public void goToArtPage() {
         mainPage.ClickArtButton();
-        assertTrue("The current url does not match Art page url",driver.getCurrentUrl().endsWith(Urls.artPageUrlShort));
+        assertTrue("The current url does not match Art page url", driver.getCurrentUrl().endsWith(Urls.artPageUrlShort));
     }
 
     @And("TC001 User click on store logo")
     public void clickLogo() {
         mainPage.ClickLogo();
-        assertTrue("The current url doesn't match Main page url",driver.getCurrentUrl().endsWith(Urls.mainPageUrlShort));
+        assertTrue("The current url doesn't match Main page url", driver.getCurrentUrl().endsWith(Urls.mainPageUrlShort));
         tearDown();
     }
 }

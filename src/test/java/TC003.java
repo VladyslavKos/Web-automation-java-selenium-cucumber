@@ -16,34 +16,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class TC003 {
-    private WebDriver driver;
-
-    MainPage mainPage;
-    LoginPage loginPage;
-    IdentityPage identityPage;
-    ProductPage productPage;
-    ShoppingCartPage shoppingCartPage;
-    OrderPage orderPage;
-    OrderConfirmationPage orderConfirmationPage;
-
-    public void setUp() {
-        Configuration configuration = new Configuration();
-        driver = configuration.getDriver();
-        PageFactory.initElements(driver, this);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        mainPage = new MainPage(driver);
-        loginPage = new LoginPage(driver);
-        identityPage = new IdentityPage(driver);
-        productPage = new ProductPage(driver);
-        shoppingCartPage = new ShoppingCartPage(driver);
-        orderPage = new OrderPage(driver);
-        orderConfirmationPage = new OrderConfirmationPage(driver);
-    }
-    public void tearDown() {
-        driver.quit();
-    }
+public class TC003 extends Main {
 
     @Given("TC003 logged in user on main page")
     public void loggIn() {
@@ -60,7 +33,7 @@ public class TC003 {
     }
 
     @And("TC003 user provide number of products")
-    public void provideNumberOfProducts(){
+    public void provideNumberOfProducts() {
         productPage.clearNumberOfTimes();
         productPage.clickSpinUp();
         productPage.clickSpinUp();
@@ -108,8 +81,9 @@ public class TC003 {
     public void checkMessage() {
         assertEquals("Wrong message", Messages.CreateNewOrderSuccessMessage, orderConfirmationPage.getMessage());
     }
+
     @And("TC003 user take screenshot of confirmed order")
-    public void takeScreenshot(){
+    public void takeScreenshot() {
         ScreenshotUtil.takeScreenshot(driver, "target/confirmed_order.png");
         tearDown();
     }

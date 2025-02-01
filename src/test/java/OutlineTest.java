@@ -18,40 +18,27 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-public class OutlineTest {
-    private WebDriver driver;
-    MainPage mainPage;
-    LoginPage loginPage;
+
+public class OutlineTest extends Main {
+
     String loginData;
     String result;
 
-    public void setUp() {
-        Configuration configuration = new Configuration();
-        driver = configuration.getDriver();
-        PageFactory.initElements(driver, this);
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-        mainPage = new MainPage(driver);
-        loginPage = new LoginPage(driver);
-    }
-
-    public void tearDown() {
-        driver.quit();
-    }
     @When("user login as {string}")
     public void userLoginAsLoginData(String loginData) {
-        this.loginData=loginData;
+        this.loginData = loginData;
         setUp();
         driver.get(Urls.mainPageUrl);
         mainPage.clickSingInButton();
-        loginPage.loginAs(loginData,loginData);
+        loginPage.loginAs(loginData, loginData);
     }
+
     @Then("result is {string}")
     public void resultIsResult(String output) {
-        if (driver.getCurrentUrl().endsWith("index.php?controller=my-account")){
+        if (driver.getCurrentUrl().endsWith("index.php?controller=my-account")) {
             result = "SingIn";
-        }else {
-            result  ="NotSingIn";
+        } else {
+            result = "NotSingIn";
         }
         assertEquals("Verification failed: ", result, output);
         driver.quit();

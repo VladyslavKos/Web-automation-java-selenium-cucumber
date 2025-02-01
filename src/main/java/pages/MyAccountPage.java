@@ -19,10 +19,11 @@ public class MyAccountPage {
     @FindBy(xpath = PageElements.MyAccountPageAddressesButtonXpath)
     private WebElement MyAccountPageAddressesButton;
 
-    public void ClickMyAccountInformation(){
+    public void ClickMyAccountInformation() {
         MyAccountPageInformationButton.click();
     }
-    public void clickAddressesButton(){
+
+    public void clickAddressesButton() {
         MyAccountPageAddressesButton.click();
     }
 

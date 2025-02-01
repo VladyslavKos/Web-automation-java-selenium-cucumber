@@ -36,7 +36,8 @@ public class ProductPage {
     public String getNumberOfChosenItems() {
         return numberOfItems.getText();
     }
-    public void clearNumberOfTimes(){
+
+    public void clearNumberOfTimes() {
         numberOfItems.clear();
     }
 

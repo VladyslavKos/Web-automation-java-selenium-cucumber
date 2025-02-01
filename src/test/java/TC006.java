@@ -16,30 +16,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class TC006 {
-    private static WebDriver driver;
-    private String email;
-    MainPage mainPage;
-    CreateAccountPage createAccountPage;
-    GenerateTestData generateTestData;
-    LoginPage loginPage;
+public class TC006 extends Main {
 
-    public void SetUp() {
-        Configuration configuration = new Configuration();
-        driver = configuration.getDriver();
-        PageFactory.initElements(driver, this);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        mainPage = new MainPage(driver);
-        driver.get(Urls.mainPageUrl);
-        createAccountPage = new CreateAccountPage(driver);
-        generateTestData = new GenerateTestData();
-        loginPage = new LoginPage(driver);
-    }
+    private String email;
 
     @When("TC006 user create account using data")
     public void createAccount() {
-        SetUp();
+        setUp();
         mainPage.clickSingInButton();
         mainPage.clickCreateAccountButton();
         email = generateTestData.generateEmail();
@@ -55,7 +38,7 @@ public class TC006 {
 
     @Then("TC006 user check if user data is correct")
     public void checkData() {
-       String data = loginPage.getLoggedUserName();
+        String data = loginPage.getLoggedUserName();
         System.out.println(data);
 
     }

@@ -6,7 +6,7 @@ Feature: SingIn Outline
     Then result is "<Result>"
     Examples:
       | LoginData                        | Result    |
-      | test734@test.com                 | SingIn    |
+      | test724@test.com                 | SingIn    |
       | test735                          | NotSingIn |
       | test735@                         | NotSingIn |
       | @                                | NotSingIn |

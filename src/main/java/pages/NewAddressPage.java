@@ -11,10 +11,12 @@ import java.util.List;
 
 public class NewAddressPage {
     private WebDriver driver;
-    public NewAddressPage(WebDriver driver){
+
+    public NewAddressPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
     @FindBy(xpath = PageElements.NewAddressPageAliasInputXpath)
     private WebElement aliasInput;
     @FindBy(xpath = PageElements.NewAddressPageFirstNameXpath)
@@ -39,44 +41,58 @@ public class NewAddressPage {
     private WebElement NewAddressPageSaveButton;
     @FindBy(xpath = PageElements.NewAddressPageSuccessMessageXpath)
     private WebElement NewAddressPageSuccessMessage;
-    public void inputAlias(String alias){
+
+    public void inputAlias(String alias) {
         aliasInput.sendKeys(alias);
     }
-    public void inputFirstName(String name){
+
+    public void inputFirstName(String name) {
         firstNameInput.sendKeys(name);
     }
-    public void inputLastName(String lastName){
+
+    public void inputLastName(String lastName) {
         lastNameInput.sendKeys(lastName);
     }
-    public void inputCompany(String company){
+
+    public void inputCompany(String company) {
         companyInput.sendKeys(company);
     }
-    public void inputVatNumber(String vat){
+
+    public void inputVatNumber(String vat) {
         vatNumberInput.sendKeys(vat);
     }
-    public void inputAddress(String address){
+
+    public void inputAddress(String address) {
         addressInput.sendKeys(address);
     }
-    public void inputAddressCompany(String complementAddress){
+
+    public void inputAddressCompany(String complementAddress) {
         addressComplementInput.sendKeys(complementAddress);
     }
-    public void inputCity(String city){
+
+    public void inputCity(String city) {
         cityInput.sendKeys(city);
     }
-    public void inputZipCode(String zipCode){
+
+    public void inputZipCode(String zipCode) {
         zipInput.sendKeys(zipCode);
     }
-    public void inputPhone(String phone){
+
+    public void inputPhone(String phone) {
         phoneInput.sendKeys(phone);
     }
-    public void clickSaveButton(){
+
+    public void clickSaveButton() {
         NewAddressPageSaveButton.click();
     }
-    public String getSuccessMessage(){
-       return NewAddressPageSuccessMessage.getText();
+
+    public String getSuccessMessage() {
+        return NewAddressPageSuccessMessage.getText();
     }
+
     @FindBy(css = "[class='address-body']")
     private List<WebElement> getAddressData;
+
     public List<String> getAddressDataText() {
         List<String> addressesText = new ArrayList<>();
         for (WebElement element : getAddressData) {
